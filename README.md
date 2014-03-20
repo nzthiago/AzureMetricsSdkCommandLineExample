@@ -1,0 +1,2 @@
+AzureMetricsSdkCommandLineExample
+=================================
