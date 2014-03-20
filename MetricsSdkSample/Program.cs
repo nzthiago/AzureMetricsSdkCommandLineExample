@@ -1,4 +1,5 @@
 ﻿using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Common;
 using Microsoft.WindowsAzure.Management.Monitoring.Metrics;
 using Microsoft.WindowsAzure.Management.Monitoring.Metrics.Models;
 using Microsoft.WindowsAzure.Management.Monitoring.Utilities;
@@ -17,8 +18,9 @@ namespace MetricsSdkSample
         
         static void Main(string[] args)
         {
-            var cred = CertificateCredentialHelper.CreateCredential(_subId, "YOUR PFX FILENAME HERE", "YOUR PFX PASSWORD HERE");
-
+            //Switch between Certificate or Token based authentication
+            //var cred = CertificateCredentialHelper.CreateCredential(_subId, "YOUR PFX FILENAME HERE", "YOUR PFX PASSWORD HERE");
+            var cred = TokenCredentialHelper.SignIn(_subId, "YOUR TENANT HERE", "YOUR CLIENT ID HERE", "YOUR REDIRECTURI HERE");
             ShowWebSiteMetrics(cred);
 
             Console.WriteLine("Finished");
